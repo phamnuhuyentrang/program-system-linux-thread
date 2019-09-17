@@ -1,0 +1,25 @@
+Première façon: Commander directement dans bash
+
+start=$(date +%s); \
+  ./tache2; \
+  dur=$(echo "$(date +%s) - $start" | bc); \
+  printf "Execution time: %.6f seconds\n" $dur
+
+
+start=$(date +%s); \
+  ./tache3; \
+  dur=$(echo "$(date +%s) - $start" | bc); \
+  printf "Execution time: %.6f seconds\n" $dur
+
+Deuxième façon: Ajouter les instructions directement dans les fichiers.
+
+#include <time.h>
+float temps;
+clock_t t1, t2;
+t1 = clock();
+
+/*Ici le programme */
+
+t2 = clock();
+temps = (float)(t2-t1)/CLOCKS_PER_SEC;
+printf("Execution time = %f\n", temps);
